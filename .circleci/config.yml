@@ -1,7 +1,17 @@
 version: 2.1
 orbs:
   node: circleci/node@3.0.0
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.19-browsers
+    steps:
+      - checkout
+
 workflows:
+  version: 2.1
   node-tests:
     jobs:
+      - build
       - node/test
