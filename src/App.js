@@ -16,6 +16,7 @@ import { SearchkitManager,
 } from 'searchkit';
 import { Container, Jumbotron } from 'react-bootstrap';
 import LoanHitsTable from './LoanHitsTable.js';
+import CustomFilter from './CustomFilter/index.js';
 import './App.css';
 
 const searchkit = new SearchkitManager("http://localhost:9200/")
@@ -38,24 +39,16 @@ function App() {
                     <LayoutBody>
                         <SideBar>
                             <ResetFilters />
-                            <RefinementListFilter
-                                field="loan_range.keyword"
-                                title="Loan Range"
-                                id="loan_range"
-                                operator="OR"
-                            />
+                            <CustomFilter attribute="loan_range" title="Loan Range" />
                             <DynamicRangeFilter
                                 field="jobs_retained"
                                 id="jobs_retained"
                                 title="Jobs Retained"
                                 interval={5}
                             />
-                            <RefinementListFilter
-                                field="state.keyword"
-                                title="State"
-                                id="state"
-                                operator="OR"
-                            />
+                            <CustomFilter attribute="business_type" title="Business Type" />
+                            <CustomFilter attribute="lender" title="Lender" />
+                            <CustomFilter attribute="state" title="State" />
                         </SideBar>
                         <LayoutResults>
                             <Hits listComponent={LoanHitsTable} />
