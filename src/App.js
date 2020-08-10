@@ -9,6 +9,9 @@ import { SearchkitManager,
     LayoutBody,
     LayoutResults,
     SideBar,
+    ResetFilters,
+    RefinementListFilter,
+    DynamicRangeFilter,
     Pagination
 } from 'searchkit';
 import { Container, Jumbotron } from 'react-bootstrap';
@@ -29,10 +32,31 @@ function App() {
                         queryOptions={{"minimum_should_match":"70%"}}
                         autofocus={true}
                         searchOnChange={true}
-                        queryFields={['business_name', 'lender']}
+                        queryFields={['business_name^3', 'lender']}
                         placeholder="Search all Companies..."
                     />
                     <LayoutBody>
+                        <SideBar>
+                            <ResetFilters />
+                            <RefinementListFilter
+                                field="loan_range.keyword"
+                                title="Loan Range"
+                                id="loan_range"
+                                operator="OR"
+                            />
+                            <DynamicRangeFilter
+                                field="jobs_retained"
+                                id="jobs_retained"
+                                title="Jobs Retained"
+                                interval={5}
+                            />
+                            <RefinementListFilter
+                                field="state.keyword"
+                                title="State"
+                                id="state"
+                                operator="OR"
+                            />
+                        </SideBar>
                         <LayoutResults>
                             <Hits listComponent={LoanHitsTable} />
                             <NoHits />
