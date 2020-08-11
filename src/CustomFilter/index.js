@@ -1,14 +1,16 @@
 import React from 'react';
-import { RefinementListFilter } from 'searchkit';
+import { Panel } from 'searchkit';
+import CustomListFilter from '../CustomListFilter';
+import CustomRangeFilter from '../CustomRangeFilter';
 
-const CustomFilter = ({ attribute, title }) => (
-    <RefinementListFilter
-        field={attribute.concat(".keyword")}
-        title={title}
-        id={attribute}
-        operator="OR"
-        size={5}
-    />
+const CustomFilter = (props) => (
+    <Panel title={props.title} collapsable={true} defaultCollapsed={true}>
+        {props.type == 'range' ? (
+            <CustomRangeFilter attribute={props.attribute} />
+        ) : (
+            <CustomListFilter attribute={props.attribute} />
+        )}
+    </Panel>
 );
 
 export default CustomFilter;

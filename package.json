@@ -14,7 +14,8 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "react-searchkit": "^1.0.0-alpha.2",
-    "searchkit": "^2.4.1-alpha.5"
+    "searchkit": "^2.4.1-alpha.5",
+    "searchkit-datefilter": "^0.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
