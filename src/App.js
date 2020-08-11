@@ -28,7 +28,7 @@ import LoanHitsTable from './LoanHitsTable.js';
 import CustomFilter from './CustomFilter';
 import './App.css';
 
-const searchkit = new SearchkitManager("https://3.84.161.91:9200/")
+const searchkit = new SearchkitManager("http://3.84.161.91:9200/")
 
 function App() {
     return (
