@@ -7,15 +7,15 @@ class LoanHitsTable extends React.Component {
     const { hits } = this.props
     return (
       <div style={{width: '100%', boxSizing: 'border-box', padding: 8}}>
-        <table className="sk-table sk-table-striped" style={{width: '100%', boxSizing: 'border-box'}}>
+        <table className="table table-bordered table-hover" style={{width: '100%', boxSizing: 'border-box'}}>
           <thead>
             <tr>
-              <th>Company</th>
-              <th>Loan Range</th>
-              <th>State</th>
-              <th>Business Type</th>
-              <th>Jobs Retained</th>
-              <th>Lender</th>
+              <th scope="col">Company</th>
+              <th scope="col">Loan Range</th>
+              <th scope="col">State</th>
+              <th scope="col">Business Type</th>
+              <th scope="col">Jobs Retained</th>
+              <th scope="col">Lender</th>
             </tr>
           </thead>
           <tbody>

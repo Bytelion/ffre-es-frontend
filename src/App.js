@@ -28,7 +28,7 @@ import LoanHitsTable from './LoanHitsTable.js';
 import CustomFilter from './CustomFilter';
 import './App.css';
 
-const searchkit = new SearchkitManager("http://localhost:9200/")
+const searchkit = new SearchkitManager("http://3.84.161.91:9200/")
 
 function App() {
     return (
@@ -41,6 +41,7 @@ function App() {
                 </TopBar>
                 <LayoutBody>
                     <SideBar>
+                        <h5>Filter Results</h5>
                         <ResetFilters />
                         <CustomFilter attribute="loan_range" title="Loan Range" />
                         <CustomFilter attribute="jobs_retained" title="Jobs Retained" type="range" />
@@ -59,6 +60,9 @@ function App() {
                                     queryFields={['business_name^10', 'lender^2', 'business_type']}
                                     placeholder="Search all Companies..."
                                 />
+                            </ActionBarRow>
+                            <ActionBarRow>
+                                <SelectedFilters />
                             </ActionBarRow>
                         </ActionBar>
 
