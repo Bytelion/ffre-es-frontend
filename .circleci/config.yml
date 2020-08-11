@@ -21,30 +21,8 @@ jobs:
           paths:
             - ~/.cache/yarn
 
-  deploy-staging:
-    machine:
-      enabled: true
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - add_ssh_keys
-      - run:
-          name: Add AWS EC2 To Known Hosts
-          command: ssh-keyscan -H ec2-54-197-125-22.compute-1.amazonaws.com >> ~/.ssh/known_hosts
-      - run:
-          name: AWS EC2 Deploy
-          command: |
-            SSH_HOST=${SERVER_HOST_STAGING}
-            ssh $SSH_NAME@$SSH_HOST "./frontend_deploy.sh"
-
 workflows:
   version: 2.1
   node-tests:
     jobs:
       - build
-      - deploy-staging:
-          requires:
-              - build
-          filters:
-            branches:
-              only: staging
