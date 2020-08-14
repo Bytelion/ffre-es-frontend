@@ -31,5 +31,5 @@ export class MapContainer extends SearchKitComponent {
 }
 
 export default GoogleApiWrapper({
-  apiKey: ('AIzaSyCt76Ys1M5Fb4XrCvXWedvCndDZI9HkuzQ')
+  apiKey: ('')
 })(MapContainer)
