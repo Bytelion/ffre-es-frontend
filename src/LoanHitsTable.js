@@ -21,12 +21,12 @@ class LoanHitsTable extends React.Component {
           <tbody>
             {hits.map(hit => (
               <tr key={hit._id}>
-                <td>{hit._source.business_name}</td>
-                <td>{hit._source.loan_range}</td>
-                <td>{hit._source.state}</td>
-                <td>{hit._source.business_type}</td>
-                <td>{hit._source.jobs_retained}</td>
-                <td>{hit._source.lender}</td>
+                <td>{hit._source.BusinessName}</td>
+                <td>{hit._source.LoanRange}</td>
+                <td>{hit._source.State}</td>
+                <td>{hit._source.BusinessType}</td>
+                <td>{hit._source.JobsRetained}</td>
+                <td>{hit._source.Lender}</td>
               </tr>
             ))}
           </tbody>

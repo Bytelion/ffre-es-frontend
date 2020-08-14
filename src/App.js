@@ -28,7 +28,7 @@ import LoanHitsTable from './LoanHitsTable.js';
 import CustomFilter from './CustomFilter';
 import './App.css';
 
-const searchkit = new SearchkitManager("http://3.84.161.91:9200/")
+const searchkit = new SearchkitManager("https://search-ffre-staging-jhz3wsrmujfb4yexpw5g37fdtm.us-east-1.es.amazonaws.com/loans/")
 
 function App() {
     return (
@@ -43,11 +43,11 @@ function App() {
                     <SideBar>
                         <h5>Filter Results</h5>
                         <ResetFilters />
-                        <CustomFilter attribute="loan_range" title="Loan Range" />
-                        <CustomFilter attribute="jobs_retained" title="Jobs Retained" type="range" />
-                        <CustomFilter attribute="business_type" title="Business Type" />
-                        <CustomFilter attribute="lender" title="Lender" />
-                        <CustomFilter attribute="state" title="State" />
+                        <CustomFilter attribute="LoanRange" title="Loan Range" />
+                        <CustomFilter attribute="JobsRetained" title="Jobs Retained" type="range" />
+                        <CustomFilter attribute="BusinessType" title="Business Type" />
+                        <CustomFilter attribute="Lender" title="Lender" />
+                        <CustomFilter attribute="State" title="State" />
                         <HitsStats />
                     </SideBar>
                     <LayoutResults>
@@ -57,7 +57,7 @@ function App() {
                                     queryOptions={{"minimum_should_match":"70%"}}
                                     autofocus={true}
                                     searchOnChange={true}
-                                    queryFields={['business_name^10', 'lender^2', 'business_type']}
+                                    queryFields={['BusinessName^10', 'Lender^2', 'BusinessType']}
                                     placeholder="Search all Companies..."
                                 />
                             </ActionBarRow>
