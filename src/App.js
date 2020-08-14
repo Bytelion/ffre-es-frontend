@@ -9,23 +9,17 @@ import { SearchkitManager,
     NoHits,
     ActionBar,
     ActionBarRow,
-    SortingSelector,
     Layout,
     LayoutBody,
     LayoutResults,
     SideBar,
     ResetFilters,
-    RefinementListFilter,
-    DynamicRangeFilter,
-    RangeInput,
-    InputFilter,
     SelectedFilters,
-    Pagination,
-    Panel
+    Pagination
 } from 'searchkit';
-import { Nav } from 'react-bootstrap';
 import LoanHitsTable from './LoanHitsTable.js';
 import CustomFilter from './CustomFilter';
+import CustomMap from './CustomMap';
 import './App.css';
 
 const searchkit = new SearchkitManager("https://search-ffre-staging-jhz3wsrmujfb4yexpw5g37fdtm.us-east-1.es.amazonaws.com/loans/")
@@ -65,6 +59,8 @@ function App() {
                                 <SelectedFilters />
                             </ActionBarRow>
                         </ActionBar>
+                        
+                        <CustomMap />
 
                         <Hits listComponent={LoanHitsTable} />
                         <NoHits />
