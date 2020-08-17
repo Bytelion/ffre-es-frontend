@@ -40,6 +40,7 @@ function App() {
                         <CustomFilter attribute="LoanRange" title="Loan Range" />
                         <CustomFilter attribute="JobsRetained" title="Jobs Retained" type="range" />
                         <CustomFilter attribute="BusinessType" title="Business Type" />
+                        <CustomFilter attribute="NAICSHuman" title="Industry" />
                         <CustomFilter attribute="Lender" title="Lender" />
                         <CustomFilter attribute="State" title="State" />
                         <HitsStats />
@@ -48,10 +49,9 @@ function App() {
                         <ActionBar>
                             <ActionBarRow>
                                 <SearchBox
-                                    queryOptions={{"minimum_should_match":"70%"}}
                                     autofocus={true}
                                     searchOnChange={true}
-                                    queryFields={['BusinessName^10', 'Lender^2', 'BusinessType']}
+                                    queryFields={['BusinessName^10', 'NAICSHuman^3', 'Lender^2', 'BusinessType']}
                                     placeholder="Search all Companies..."
                                 />
                             </ActionBarRow>

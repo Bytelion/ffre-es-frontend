@@ -1,4 +1,3 @@
-import * as _ from "lodash";
 import React from 'react';
 
 class LoanHitsTable extends React.Component {
@@ -14,7 +13,7 @@ class LoanHitsTable extends React.Component {
               <th scope="col">Loan Range</th>
               <th scope="col">State</th>
               <th scope="col">Zipcode</th>
-              <th scope="col">NAICS</th>
+              <th scope="col">Industry</th>
               <th scope="col">Business Type</th>
               <th scope="col">Jobs Retained</th>
               <th scope="col">Lender</th>
@@ -27,7 +26,7 @@ class LoanHitsTable extends React.Component {
                 <td>{hit._source.LoanRange}</td>
                 <td>{hit._source.State}</td>
                 <td>{hit._source.Zip}</td>
-                <td>{hit._source.NAICSCode}</td>
+                <td>{hit._source.NAICSHuman}</td>
                 <td>{hit._source.BusinessType}</td>
                 <td>{hit._source.JobsRetained}</td>
                 <td>{hit._source.Lender}</td>
