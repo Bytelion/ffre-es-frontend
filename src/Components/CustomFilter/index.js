@@ -5,7 +5,7 @@ import CustomRangeFilter from '../CustomRangeFilter';
 
 const CustomFilter = (props) => (
     <Panel title={props.title} collapsable={true} defaultCollapsed={false}>
-        {props.type == 'range' ? (
+        {props.type === 'range' ? (
             <CustomRangeFilter attribute={props.attribute} />
         ) : (
             <CustomListFilter attribute={props.attribute} />

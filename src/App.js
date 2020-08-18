@@ -1,73 +1,25 @@
 import React from 'react';
-import { SearchkitManager,
-    SearchkitProvider,
-    SearchBox,
-    TopBar,
-    Hits,
-    HitsStats,
-    NoHits,
-    ActionBar,
-    ActionBarRow,
-    Layout,
-    LayoutBody,
-    LayoutResults,
-    SideBar,
-    ResetFilters,
-    SelectedFilters,
-    Pagination
-} from 'searchkit';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
-import LoanHitsTable from './LoanHitsTable.js';
-import CustomFilter from './CustomFilter';
-import CustomFooter from './CustomFooter';
-import './App.css';
-
-const searchkit = new SearchkitManager("https://search-ffre-staging-jhz3wsrmujfb4yexpw5g37fdtm.us-east-1.es.amazonaws.com/loans/")
+import About from './Pages/About';
+import Home from './Pages/Home';
+import CompanyPage from './Pages/CompanyPage';
 
 function App() {
     return (
-        <SearchkitProvider searchkit={searchkit}>
-            <Layout>
-                <TopBar>
-                    <div>
-                        <h3 style={{"color":"white"}}>LOGO</h3>
-                    </div>
-                </TopBar>
-                <LayoutBody>
-                    <SideBar>
-                        <h5>Filter Results</h5>
-                        <ResetFilters />
-                        <CustomFilter attribute="LoanRange" title="Loan Range" />
-                        <CustomFilter attribute="JobsRetained" title="Jobs Retained" type="range" />
-                        <CustomFilter attribute="BusinessType" title="Business Type" />
-                        <CustomFilter attribute="NAICSHuman" title="Industry" />
-                        <CustomFilter attribute="Lender" title="Lender" />
-                        <CustomFilter attribute="State" title="State" />
-                        <HitsStats />
-                    </SideBar>
-                    <LayoutResults>
-                        <ActionBar>
-                            <ActionBarRow>
-                                <SearchBox
-                                    autofocus={true}
-                                    searchOnChange={true}
-                                    queryFields={['BusinessName^10', 'NAICSHuman^3', 'Lender^2', 'BusinessType']}
-                                    placeholder="Search all Companies..."
-                                />
-                            </ActionBarRow>
-                            <ActionBarRow>
-                                <SelectedFilters />
-                            </ActionBarRow>
-                        </ActionBar>
-
-                        <Hits listComponent={LoanHitsTable} />
-                        <NoHits />
-                    </LayoutResults>
-                </LayoutBody>
-            </Layout>
-            <Pagination showNumbers={true} />
-            <CustomFooter />
-        </SearchkitProvider>
+        <Router>
+            <Switch>
+                <Route exact path="/about-us" component={About} />
+                <Route exact path="/" component={Home} />
+                <Route path="/:companyId" render={(props) => {
+                    return ( <CompanyPage {...props} /> )
+                }} />
+            </Switch>
+        </Router>
     );
 }
 

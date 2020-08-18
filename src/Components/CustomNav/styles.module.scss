@@ -1,0 +1,12 @@
+@mixin box-shadow($top, $left, $blur, $size, $color) {
+   -webkit-box-shadow: $top $left $blur $size $color;
+   -moz-box-shadow: $top $left $blur $size $color;
+   box-shadow: $top $left $blur $size $color;
+}
+
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    @include box-shadow(2px, 0px, 5px, 0, rgba(0, 0, 0, 0.3));
+}
