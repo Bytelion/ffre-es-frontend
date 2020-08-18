@@ -30,7 +30,7 @@ function Home() {
         <SearchkitProvider searchkit={searchkit}>
             <Layout>
                 <CustomNav />
-                <LayoutBody>
+                <LayoutBody className={styles.body}>
                     <SideBar>
                         <h5>Filter Results</h5>
                         <ResetFilters />
