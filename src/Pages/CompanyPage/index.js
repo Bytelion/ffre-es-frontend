@@ -3,6 +3,7 @@ import CustomNav from '../../Components/CustomNav';
 import CustomFooter from '../../Components/CustomFooter';
 import CustomLabel from '../../Components/CustomLabel';
 import CustomBackButton from '../../Components/CustomBackButton';
+import CustomCommentContainer from '../../Components/CustomCommentContainer';
 import { Container, Card, Row, Col } from 'react-bootstrap';
 import styles from './styles.module.scss';
 
@@ -29,8 +30,8 @@ class CompanyPage extends React.Component {
     }
 
     render() {
-        const { data } = this.state;
-        console.log(data);
+        const { data, comments } = this.state;
+        const { companyId } = this.props.match.params;
 
         if (data === null) {
             return ( null );
@@ -63,6 +64,9 @@ class CompanyPage extends React.Component {
                                 </Row>
                             </Container>
                         </Card>
+
+                        {/* Comments Section */}
+                        <CustomCommentContainer loanId={companyId} />
                     </Container>
                     <CustomFooter />
                 </>
