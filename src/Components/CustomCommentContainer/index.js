@@ -7,20 +7,39 @@ import styles from './styles.module.scss';
 const CustomCommentContainer = (props) => {
     const [comment, setComment] = useState("");
     const [comments, setComments] = useState([]);
+    const [users, setUsers] = useState([]);
     const { user, isAuthenticated } = useAuth0();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
+    const getUser = (id) => {
+        const current = users.filter((user) => {
+            return user.id == id;
+        }).pop()
 
-        const name = user.name;
+        if (current != null) {
+            return current.email;
+        }
+    }
+
+    const loadComments = () => {
+        if (props.loanId != null) {
+            fetch("http://100.26.168.169/user_comments")
+                .then(response => response.json())
+                .then((jsonData) => {
+                    console.log(jsonData);
+                    const matches = jsonData.filter((obj) => {
+                        return obj.loan_id == props.loanId;
+                    });
+
+                    setComments(matches);
+                });
+        }
+    }
+
+    const handleSubmit = (event) => {
+
+        const name = user.email;
 
         if (comment != null && comment.length > 0) {
-            setComments(comments.concat([{
-                user: name,
-                date: 'Today at 4:30 PM',
-                comment: comment
-            }]));
 
             const userId = user.sub.split('|').pop();
             const loanId = props.loanId;
@@ -37,28 +56,27 @@ const CustomCommentContainer = (props) => {
 
             fetch('http://100.26.168.169/user_comments', requestOptions)
                 .then(response => response.json())
-                .then(data => console.log(data));
+                .then(data => loadComments());
         }
     }
 
     useEffect(() => {
-        if (props.loanId != null) {
-            fetch("http://100.26.168.169/user_comments")
-                .then(response => response.json())
-                .then((jsonData) => {
-                    console.log(jsonData);
-                    const matches = jsonData.filter((obj) => {
-                        return obj.loan_id == props.loanId;
-                    });
+        fetch("http://100.26.168.169/users")
+            .then(response => response.json())
+            .then(data => setUsers(data));
+    }, []);
 
-                    setComments(matches);
-                });
-        }
+    useEffect(() => {
+        loadComments();
     }, [props]);
 
     useEffect(() => {
-        console.log(`Comments updated: ${comments}`);
+        console.log(comments);
     }, [comments]);
+
+    useEffect(() => {
+        console.log(users);
+    }, [users]);
 
     const handleChange = (event) => {
         setComment(event.target.value);
@@ -69,7 +87,7 @@ const CustomCommentContainer = (props) => {
             <h5 className={styles.header}>Comments <span className={styles.count}>({comments.length} Total)</span></h5>
             <hr />
             {comments && comments.map(comment => (
-                <CustomComment user={comment.user} comment={comment.comment} />
+                <CustomComment user={getUser(comment.user_id)} time={comment.created_at} comment={comment.comment} />
             ))}
             {isAuthenticated ?
                 <Form>
