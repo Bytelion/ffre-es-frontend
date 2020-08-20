@@ -16,7 +16,7 @@ const CustomCommentContainer = (props) => {
         }).pop()
 
         if (current != null) {
-            return current.username;
+            return current.name;
         }
     }
 
