@@ -66,7 +66,7 @@ class CompanyPage extends React.Component {
                         </Card>
 
                         {/* Comments Section */}
-                        <CustomCommentContainer loanId={companyId} />
+                        {/*<CustomCommentContainer loanId={companyId} />*/}
                     </Container>
                     <CustomFooter />
                 </>

@@ -24,6 +24,7 @@ const CustomNav = () => {
                     </Nav.Item>
                 </Nav>
             </Navbar.Collapse>
+            {/*
             <Form inline className={styles.login}>
                 {isAuthenticated ?
                     <Button variant="secondary" onClick={() => logout({ returnTo: window.location.origin })}>Logout</Button>
@@ -31,6 +32,7 @@ const CustomNav = () => {
                     <Button variant="primary" onClick={() => loginWithRedirect()}>Login</Button>
                 }
             </Form>
+            */}
         </Navbar>
     );
 }
