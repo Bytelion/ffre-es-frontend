@@ -10,12 +10,13 @@ const CustomNav = () => {
         <Navbar className={styles.nav} expand="lg">
             <Navbar.Brand href="/">
                 <img
-                    alt="LOGO"
+                    alt="The PPP Loan Transparency Platform"
                     src={require('../../imgs/logo_nav.png')}
                     width="90"
                     height="60"
-                    className="d-inline-block align-top"
-                />
+                    className="d-inline-block"
+                />{' '}
+                <strong>The PPP Loan Transparency Platform</strong>
             </Navbar.Brand>
             <Navbar.Collapse className="justify-content-end">
                 <Nav>
