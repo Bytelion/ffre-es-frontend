@@ -7,7 +7,6 @@ import {
 
 import { Auth0Provider } from "@auth0/auth0-react";
 import About from './Pages/About';
-import Login from './Pages/Login';
 import Home from './Pages/Home';
 import CompanyPage from './Pages/CompanyPage';
 import './App.css';
