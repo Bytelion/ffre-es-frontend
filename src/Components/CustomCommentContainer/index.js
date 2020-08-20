@@ -22,7 +22,7 @@ const CustomCommentContainer = (props) => {
 
     const loadComments = () => {
         if (props.loanId != null) {
-            fetch("http://100.26.168.169/user_comments")
+            fetch("https://100.26.168.169/user_comments")
                 .then(response => response.json())
                 .then((jsonData) => {
                     console.log(jsonData);
@@ -54,14 +54,14 @@ const CustomCommentContainer = (props) => {
                 })
             };
 
-            fetch('http://100.26.168.169/user_comments', requestOptions)
+            fetch('https://100.26.168.169/user_comments', requestOptions)
                 .then(response => response.json())
                 .then(data => loadComments());
         }
     }
 
     useEffect(() => {
-        fetch("http://100.26.168.169/users")
+        fetch("https://100.26.168.169/users")
             .then(response => response.json())
             .then(data => setUsers(data));
     }, []);
