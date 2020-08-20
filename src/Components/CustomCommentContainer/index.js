@@ -22,7 +22,7 @@ const CustomCommentContainer = (props) => {
 
     const loadComments = () => {
         if (props.loanId != null) {
-            fetch("https://100.26.168.169/user_comments")
+            fetch("https://api.viridig.com/user_comments")
                 .then(response => response.json())
                 .then((jsonData) => {
                     console.log(jsonData);
@@ -54,14 +54,15 @@ const CustomCommentContainer = (props) => {
                 })
             };
 
-            fetch('https://100.26.168.169/user_comments', requestOptions)
+            {/* POST Comment */}
+            fetch('https://api.viridig.com/user_comments', requestOptions)
                 .then(response => response.json())
                 .then(data => loadComments());
         }
     }
 
     useEffect(() => {
-        fetch("https://100.26.168.169/users")
+        fetch("https://api.viridig.com/users")
             .then(response => response.json())
             .then(data => setUsers(data));
     }, []);
